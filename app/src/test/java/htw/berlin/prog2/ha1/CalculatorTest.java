@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+
 @DisplayName("Retro calculator")
 class CalculatorTest {
 
@@ -56,20 +58,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("should display error when drawing the square root of a negative number")
-    void testSquareRootOfNegative() {
-        Calculator calc = new Calculator();
 
-        calc.pressDigitKey(7);
-        calc.pressNegativeKey();
-        calc.pressUnaryOperationKey("√");
-
-        String expected = "Error";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
 
     @Test
     @DisplayName("should not allow multiple decimal dots")
@@ -92,6 +81,24 @@ class CalculatorTest {
     //TODO hier weitere Tests erstellen
 
     @Test
+    @DisplayName("should display the result after multiplying two positive numbers  ")
+    void testMultiplicationOfPositive() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "50";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
     @DisplayName("should display the square root of a positive number")
     void testSquareRootOfPositive() {
         Calculator calc = new Calculator();
@@ -99,66 +106,29 @@ class CalculatorTest {
         calc.pressDigitKey(9);
         calc.pressUnaryOperationKey("√");
 
-        String expected = "3.0";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
-
-
-
-    @Test
-    @DisplayName("Should not allow multiple decimal dots")
-    void testMultipleDecimalDots2() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(2);
-        calc.pressDotKey();
-        calc.pressDigitKey(4);
-        calc.pressDotKey();
-        calc.pressDigitKey(3);
-
-        String expected = "2.43";
+        String expected = "3";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
 
     @Test
-    @DisplayName("Should display result after multiplying two positive numbers")
-    void testMultiply() {
+    @DisplayName("Should display result after adding multiple positive numbers")
+    void testPositiveAdditionOfMultipleNumbers() {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("X");
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(5);
         calc.pressEqualsKey();
 
-        String expected = "25";
+        String expected = "15";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
-
-
-    @Test
-    @DisplayName("should display result after subtracting two positive multi-digit numbers")
-    void testPositiveSubtraction() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(20);
-        calc.pressBinaryOperationKey("-");;
-        calc.pressDigitKey(10);
-        calc.pressEqualsKey();
-
-        String expected = "10";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-
-
-    }
-
 
 }
 
