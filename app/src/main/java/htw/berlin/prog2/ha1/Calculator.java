@@ -33,6 +33,9 @@ public class Calculator {
      * Führt in jedem Fall dazu, dass die gerade gedrückte Ziffer auf dem Bildschirm angezeigt
      * oder rechts an die zuvor gedrückte Ziffer angehängt angezeigt wird.
      * @param digit Die Ziffer, deren Taste gedrückt wurde
+
+     * Wird die "=" Taste ausgeführt, wird das Ergebnis überschrieben, nicht angehangen.
+     *
      */
     public void pressDigitKey(int digit) {
 
@@ -48,6 +51,7 @@ public class Calculator {
             screen = "";
             inputResetAfterEquals = false;
         }
+
 
 
         screen = screen + digit;
@@ -143,6 +147,8 @@ public class Calculator {
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
 
+     * Wenn noch keine Rechenoperation gedrückt wurde und nur eine Zahl dort steht, wird nur die Zahl ausgegeben.
+     * Wird die "=" Taste betätigt, wird die Ausgabe und der Bildschirm zurückgesetzt.
      */
 
 
