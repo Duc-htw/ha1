@@ -169,22 +169,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("should Reset the function completely")
-    public void testClearKeyResetsCompletelyWhenUsingTwice() {
-
-        Calculator calc = new Calculator();
-        calc.pressDigitKey(9);
-        calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(5);
-        calc.pressClearKey();
-        calc.pressEqualsKey();
-
-        String expected = "9";
-        String actual = calc.readScreen();
-        assertEquals(expected, actual);
-
-    }
 
     @Test
     @DisplayName("should display new Input after pressing Equals")

@@ -45,10 +45,6 @@ public class Calculator {
 
         screen = screen + digit;
 
-        if (screen.equals("0") || inputResetAfterEquals) {
-            screen = "";
-            inputResetAfterEquals = false;
-        }
 
 
 
@@ -65,7 +61,7 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "3";
+        screen = "0";
         latestOperation = "";
         latestValue = 0.0;
 
@@ -105,10 +101,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.equals("NaN")) screen = "Error";
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-        if (latestOperation.equals("/") && Double.parseDouble(screen) == 0) {
-            screen = "Error";
-            return;
-        }
+
 
     }
 
@@ -148,8 +141,8 @@ public class Calculator {
 
 
     public void pressEqualsKey() {
-
         if (latestOperation.isEmpty()) return;
+
 
 
 
@@ -164,7 +157,6 @@ public class Calculator {
         if(screen.equals("Infinity")) screen = "Error";
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
-        inputResetAfterEquals = true;
 
 
     }
