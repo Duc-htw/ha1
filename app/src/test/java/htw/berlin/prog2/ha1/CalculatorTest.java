@@ -117,7 +117,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display the square root of a positive number")
+    @DisplayName("should display multiple Operations with positive number")
     void testSquareRootOfPositive() {
         Calculator calc = new Calculator();
 
@@ -138,7 +138,7 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("should display result after subtracting 2 negative numbers")
+    @DisplayName("should display result after subtracting 2 positive numbers")
     public void testSubtractingNegativeNumbers() {
 
         Calculator calc = new Calculator();
